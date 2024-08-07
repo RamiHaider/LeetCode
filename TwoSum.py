@@ -44,7 +44,7 @@ def combinations(iterable, r):
         return
     indices = list(range(r))
 
-    yield tuple(pool[i] for i in indices)
+    yield indices, tuple(pool[i] for i in indices)  # Changed this line
     while True:
         for i in reversed(range(r)):
             if indices[i] != i + n - r:
@@ -54,13 +54,11 @@ def combinations(iterable, r):
         indices[i] += 1
         for j in range(i+1, r):
             indices[j] = indices[j-1] + 1
-        yield tuple(pool[i] for i in indices)
+        yield indices.copy(), tuple(pool[i] for i in indices)  # Changed this line
 
-
-
-for combo in combinations(iterable, r):
+for indices, combo in combinations(iterable, r):
     if sum(combo) == target:
-        print(combo)
+        print(f"Indices: {tuple(indices)}, Values: {combo}")
 
 
 
