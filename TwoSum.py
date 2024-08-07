@@ -61,4 +61,10 @@ for indices, combo in combinations(iterable, r):
         print(f"Indices: {tuple(indices)}, Values: {combo}")
 
 
+#iterable = [9,1,3,5]
+#r = 2
+#target = 8
+
+##OUTPUT: Indices: (2,3), Values: (3,5)
+
 
